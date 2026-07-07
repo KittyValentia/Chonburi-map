@@ -303,7 +303,7 @@
             map.flyTo([lat, lng], 17, { animate: true, duration: 1.5 });
             clearRoutes();
 
-    // ลบลูปที่ใช้วาดเส้นพิกัด L.polyline เดิมออกทั้งหมด เหลือแค่ตั้งเวลาเปิด Popup เป็นจุด ๆ พอ
+    // ลบลูปที่ใช้วาดเส้นพิกัด L.polyline เดิมออกทั้งหมด
     setTimeout(function() { 
         if (markerObjects[id]) { 
             markerObjects[id].openPopup(); 
@@ -343,7 +343,7 @@
                         sortedShops.forEach(function(shop) {
                             if (shop.category === "restaurant" || shop.category === "legendaryrestaurant") {
                                 var distMeter = Math.round(calculateDistance(item.lat, item.lng, shop.lat, shop.lng) * 1000);
-                                if (distMeter <= 1500) {
+                                if (distMeter <= 500) {
                                     matchCount++;
                                     var displayDist = distMeter >= 1000 ? (distMeter/1000).toFixed(2) + " กม." : distMeter + " ม.";
                                     var walkMinutes = Math.ceil(distMeter / 70); 
@@ -356,7 +356,7 @@
                             <div style="font-weight:700; font-size:14px; margin-bottom:4px;">🚗 ${item.name}</div>
                             <div style="font-size:12px; color:#475569; margin-bottom:6px;">${item.details}</div>
                             <div class="smart-router-box">
-                                <div style="font-size:12px; font-weight:700; color:#FF0044;">⚡ ร้านอร่อย/เก่าแก่ในระยะ 1.5 กม. (${matchCount} ร้าน)</div>
+                                <div style="font-size:12px; font-weight:700; color:#FF0044;">⚡ ร้านอร่อย/เก่าแก่ในระยะ 500 ม. (${matchCount} ร้าน)</div>
                                 <ul style="margin: 5px 0 0; padding-left: 15px; max-height:100px; overflow-y:auto;">${nearbyShopsHtml || "<li>ไม่มีร้านค้าระยะใกล้</li>"}</ul>
                             </div>
                             <a href="${navUrl}" target="_blank" class="btn-navigate">🚗 นำทางด้วย Google Maps</a>
