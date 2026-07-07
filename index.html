@@ -303,26 +303,13 @@
             map.flyTo([lat, lng], 17, { animate: true, duration: 1.5 });
             clearRoutes();
 
-            var clickedItem = locationsData.find(function(x) { return x.id === id; });
-            if (clickedItem && clickedItem.category === "parking") {
-                // จัดเรียงลำดับเวลาวาดเส้นนำทางบนแผนที่
-                var sortedShops = [...locationsData].sort((a, b) => getCategoryPriority(a.category) - getCategoryPriority(b.category));
-                
-                sortedShops.forEach(function(shop) {
-                    if (shop.category === "restaurant" || shop.category === "legendaryrestaurant") {
-                        var distMeter = Math.round(calculateDistance(lat, lng, shop.lat, shop.lng) * 1000);
-                        if (distMeter <= 1500) {
-                            var line = L.polyline([[lat, lng], [shop.lat, shop.lng]], {
-                                color: '#FF0044', weight: 3.5, dashArray: '6, 8', opacity: 0.8
-                            }).addTo(map);
-                            routeLines.push(line);
-                        }
-                    }
-                });
-            }
-            setTimeout(function() { if (markerObjects[id]) { markerObjects[id].openPopup(); } }, 1500);
-        }
-
+    // ลบลูปที่ใช้วาดเส้นพิกัด L.polyline เดิมออกทั้งหมด เหลือแค่ตั้งเวลาเปิด Popup เป็นจุด ๆ พอ
+    setTimeout(function() { 
+        if (markerObjects[id]) { 
+            markerObjects[id].openPopup(); 
+        } 
+    }, 1500);
+}
         function renderMarkers(filterKeyword = "") {
             markersClusterGroup.clearLayers(); 
             clearRoutes();
