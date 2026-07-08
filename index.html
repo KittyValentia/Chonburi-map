@@ -137,10 +137,22 @@
 </head>
 <body>
 
-    <div class="header-section">
-        <h2>📍ระบบแผนที่ท่องเที่ยวอัจฉริยะ เทศบาลเมืองชลบุรี</h2>
-        <p class="subtitle">รวมพิกัดกินเที่ยว ครบจบในที่เดียว✨</p>
+  <div class="header-section">
+        <!-- ใช้ Flexbox จัดให้โลโก้และข้อความเรียงต่อกันในแนวนอน และมีช่องว่าง (gap) 15px -->
+        <div style="display: flex; align-items: center; gap: 15px;">
+            
+            <!-- ใส่โลโก้ตรงนี้ (กำหนดขนาดกว้าง/สูงให้พอดีกับข้อความ) -->
+            <img src="logo.png" alt="โลโก้เทศบาล" style="width: 55px; height: 55px; object-fit: contain;">
+            
+            <!-- ส่วนของข้อความชื่อแผนที่และคำบรรยาย -->
+            <div>
+                <h2>ระบบแผนที่ท่องเที่ยวอัจฉริยะ เทศบาลเมืองชลบุรี</h2>
+                <p class="subtitle">รวมพิกัดกินเที่ยว ครบจบในที่เดียว✨</p>
+            </div>
+            
+        </div>
     </div>
+
     
     <div class="filter-container">
         <button class="btn-filter active" id="btn-all" onclick="toggleCategory('all')">✨ ทั้งหมด</button>
